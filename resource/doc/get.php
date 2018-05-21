@@ -26,6 +26,7 @@ include_once '../../service/KnowledgeBaseService.php';
 include_once '../../service/FolderService.php';
 include_once '../../service/RegisterService.php';
 include_once '../../util/Constants.php';
+include_once '../../util/ValidateHelper.php';
 
 $id = $_REQUEST['id'];
 $headers = apache_request_headers();
@@ -34,6 +35,10 @@ $permission = null;
 try {
     $db = new Database();
     $conn = $db->getConnection();
+
+    if(!validateInteger($id)){
+        throw new Exception("Not a valid document identifier");
+    }
 
     $docService =  new DocumentService($conn);
     $doc = $docService->getById($id);

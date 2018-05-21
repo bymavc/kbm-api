@@ -150,7 +150,7 @@ class UserService
 
     public function getList(User $user)
     {
-        $query = "SELECT * FROM user WHERE id != ?";
+        $query = "SELECT * FROM user WHERE id != ? ORDER BY username";
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($user->getId()));
 

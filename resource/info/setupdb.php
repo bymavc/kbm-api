@@ -1,12 +1,11 @@
 <?php
-include_once 'Database.php';
 
-$db = new Database();
-$conn = $db->getConnection();
+$host = 'localhost:9100';
+$user = 'root';
+$pass = '';
 
-$query = "CREATE DATABASE IF NOT EXISTS kbmdb;
-
-USE kbmdb;
+$query_create_db = "CREATE DATABASE IF NOT EXISTS kbmdb;";
+$query_create_tables = "USE kbmdb;
 
 CREATE TABLE IF NOT EXISTS user (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
@@ -114,10 +113,18 @@ CREATE TABLE IF NOT EXISTS auth (
   date DATETIME NOT NULL
 ) ENGINE = InnoDB;";
 
-$stmt = $conn->prepare($query);
-if($stmt->execute()){
-    echo "Database Set up performed correctly";
-} else {
-    echo "Unable to set up database";
+try {
+  $conn = new PDO('mysql:host=' . $host, $user, $pass);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $conn->exec('set names utf8');
+
+  $conn->exec($query_create_db);
+  echo "Database created successfully<br>";
+
+  $conn->exec($query_create_tables);
+  echo "Tables created successfully<br>";
+
+} catch (PDOException $e){
+  echo $sql . $e->getMessage();
 }
 

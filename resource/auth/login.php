@@ -30,6 +30,7 @@ try {
 
     $conn->beginTransaction();
 
+
     $authService = new AuthService($conn);
     $auth = $authService->init($data->username, $data->password);
 

@@ -33,6 +33,7 @@ try {
 
     echo json_encode(array(
         'success' => true,
+        'id' => $user->getId(),
         'username' => $user->getUsername(),
         'email' => $user->getEmail(),
         'first_name' => $user->getFirstName(),

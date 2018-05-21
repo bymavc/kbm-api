@@ -14,15 +14,23 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 include_once '../../config/Database.php';
 include_once '../../service/UserService.php';
+include_once '../../util/ValidateHelper.php';
 
+try {
+    $db = new Database();
+    $conn = $db->getConnection();
 
-$db = new Database();
-$conn = $db->getConnection();
+    $userService = new UserService($conn);
 
-$userService = new UserService($conn);
+    if(!validateEmail($_REQUEST['email'])){
+        throw new Exception("Invalid email address");
+    }
 
-if($userService->checkEmail($_REQUEST['email'])){
-    echo json_encode(array('title' => 'Email verification', 'message' => 'Email is already in use', 'success' => false));
-} else {
-    echo json_encode(array('title' => 'Email verification', 'message' => 'Email is available', 'success' => true));
+    if($userService->checkEmail($_REQUEST['email'])){
+        echo json_encode(array('title' => 'Email verification', 'message' => 'Email is already in use', 'success' => false));
+    } else {
+        echo json_encode(array('title' => 'Email verification', 'message' => 'Email is available', 'success' => true));
+    }
+} catch (Exception $e){
+    echo json_encode(array('title' => 'Error', 'message' => $e->getMessage(), 'success' => false));
 }

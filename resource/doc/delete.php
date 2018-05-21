@@ -28,6 +28,7 @@ include_once '../../service/FolderService.php';
 include_once '../../service/RegisterService.php';
 include_once '../../service/TagService.php';
 include_once '../../util/Constants.php';
+include_once '../../util/ValidateHelper.php';
 
 $headers = apache_request_headers();
 $token = $headers['Authorization'];
@@ -38,6 +39,10 @@ try {
     $conn = $db->getConnection();
 
     $conn->beginTransaction();
+
+    if(!validateInteger($data)){
+        throw new Exception("Not a valid document identifier");
+    }
 
     $authService = new AuthService($conn);
     $auth = $authService->getAuth($token);

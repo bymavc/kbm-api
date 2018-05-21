@@ -44,6 +44,10 @@ try {
     $userService = new UserService($conn);
     $user = $userService->getById($auth->getUser());
 
+    if(!validateInteger($data->id) || !validateInteger($data->new_owner)){
+        throw new Exception("Not a valid identifier");
+    }
+
     $kbService = new KnowledgeBaseService($conn);
     $kb = $kbService->getById($data->id);
 

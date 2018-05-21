@@ -36,6 +36,10 @@ try {
     $db = new Database();
     $conn = $db->getConnection();
 
+    if(!validateInteger($kb)){
+        throw new Exception("Not a valid knowledge base identifier");
+    }
+
     $authService = new AuthService($conn);
     $auth = $authService->getAuth($token);
 

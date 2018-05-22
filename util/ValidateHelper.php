@@ -91,5 +91,7 @@ function validateKb(KnowledgeBase $kb)
     $v1 = validateInteger($kb->getStatus());
     $v2 = validateInteger($kb->getPrivacy());
     $v3 = validateAlphaNumWithSpaces($kb->getName());
+
+    
     return ($v1 && $v2);
 }

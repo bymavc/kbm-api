@@ -66,7 +66,11 @@ try {
     );
 
     $conn->commit();
-    echo json_encode(array('title' => 'User Created', 'message' => 'A verification email has been sent to your account', 'success' => true));
+    echo json_encode(array(
+        'title' => 'User Created', 
+        'message' => 'A verification email has been sent to your account', 
+        'success' => true
+    ));
 } catch (Exception $e) {
     $conn->rollBack();
     echo json_encode(array('title' => 'Error', 'message' => $e->getMessage(), 'success' => false));

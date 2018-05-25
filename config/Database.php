@@ -8,7 +8,7 @@
 
 class Database
 {
-    private $host = 'localhost:9100';
+    private $host = 'localhost';
     private $user = 'root';
     private $pass = '';
     private $dbname = 'kbmdb';

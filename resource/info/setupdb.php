@@ -1,6 +1,6 @@
 <?php
 
-$host = 'localhost:9100';
+$host = 'localhost';
 $user = 'root';
 $pass = '';
 

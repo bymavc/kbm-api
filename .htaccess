@@ -2,3 +2,5 @@ RewriteEngine on
 
 RewriteCond %{THE_REQUEST} /(config|files|object|service|util)/.+ [NC]
 RewriteRule ^ - [R=403,L]
+
+php_flag display_errors off

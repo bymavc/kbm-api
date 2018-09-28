@@ -1,6 +1,6 @@
-# KBM Web Server Application
+# KBM API
 
-KBM stands for Knowledge Base Manager and is a project for Webmaster class at University. The project is divided in two parts. The first one is a [Client Web Application](https://github.com/bymavc/kbm-web) and the second one is this Web Server Application.
+KBM stands for Knowledge Base Manager and is a project for Webmaster class at University. The project is divided in two parts. The first one is a [Client Web Application](https://github.com/bymavc/kbm-web) and the second one is this API.
 
 ### Concept
 The concept of this application could be described like "A GitHub only for documents" and it works like this.

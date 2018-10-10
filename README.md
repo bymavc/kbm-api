@@ -25,7 +25,7 @@ This is a REST API so that it cannot handle sessions yet it handles authenticati
 
 ### Technologies, Frameworks, Libraries and Languages Involved
 
-#### Tachnologies
+#### Technologies
 - MySQL
 
 #### Languages

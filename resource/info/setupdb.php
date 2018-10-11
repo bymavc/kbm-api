@@ -4,7 +4,7 @@ $host = 'localhost';
 $user = 'root';
 $pass = '';
 
-$query_create_db = "CREATE DATABASE IF NOT EXISTS kbmdb;";
+$query_create_db = "CREATE DATABASE IF NOT EXISTS kbmdb CHARACTER SET utf8 COLLATE utf8_spanish2_ci;";
 $query_create_tables = "USE kbmdb;
 
 CREATE TABLE IF NOT EXISTS user (
